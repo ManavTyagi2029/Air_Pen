@@ -1,0 +1,37 @@
+<mat-card class="new_entry_form">
+    <mat-form-field appearance="outline">
+      <mat-label>Task</mat-label>
+      <input matInput [(ngModel)] = "newtitle">
+    </mat-form-field>
+  
+ 
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)] = "newdesc">
+    </mat-form-field>
+   
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput [(ngModel)] = "newdate" type="date">
+    </mat-form-field>
+    <br />
+  </mat-card>
+  <div class="adder">
+    <button class="add" mat-raised-button color="#74dee8" (click)="add_todo()">Update List</button>
+    <br />
+    <span *ngIf="todo_list.length > 0">
+     <h3>Pending Tasks: {{ todo_list.length }}</h3> 
+    </span>
+  </div>
+  
+
+  
+  <mat-card *ngFor="let item of todo_list; let i = index" class="entry">
+    <mat-card-title>{{i+1}}. {{ item.title }}</mat-card-title>
+    <mat-card-subtitle>{{ item.date }}</mat-card-subtitle>
+    <mat-card-content>{{ item.desc }}</mat-card-content>
+    <button class="delete_button" mat-icon-button color="warn" (click)="delete_todo(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card>
